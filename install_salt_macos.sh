@@ -41,9 +41,6 @@ rmdir "${TEMP_DIR}"
 if [ "${INSTALL_HOMEBREW}" == "0" ]; then
 	echo "Installing Homebrew as ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null'
-    
-	echo "Updating Homebrew as ${SALT_USER}..."
-	su - "${SALT_USER}" -c '/usr/local/bin/brew update'
 
 	# Ensure homebrew is in the ssh user's path
 	echo "Adding Homebrew to the ${SALT_USER} user's path..."
