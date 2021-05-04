@@ -21,7 +21,7 @@ fi
 
 echo "install_salt_macos.sh will install ${SALT_VERSION}-py3"
 
-if [ $"{ARCHIVED_VERSION}" -eq 0 ]; then
+if [ "${ARCHIVED_VERSION}" -eq 0 ]; then
 	REPO_URL="https://archive.repo.saltproject.io"
 else
 	REPO_URL="https://repo.saltproject.io"
