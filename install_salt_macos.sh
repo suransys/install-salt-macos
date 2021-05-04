@@ -40,10 +40,10 @@ rmdir "${TEMP_DIR}"
 # We need Homebrew for salt pkg management
 if [ "${INSTALL_HOMEBREW}" == "0" ]; then
 	echo "Installing Homebrew as ${SALT_USER}..."
-	su - "${SALT_USER}" -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null'
+	su - "${SALT_USER}" -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null' || true
 
 	echo "Fetching full brew repo as ${SALT_USER}..."
-	su - "${SALT_USER}" -c 'git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow'
+	su - "${SALT_USER}" -c '/usr/bin/git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow'
 
 	echo "Updating homebrew ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/usr/local/bin/brew update'
