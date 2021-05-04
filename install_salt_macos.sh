@@ -45,7 +45,7 @@ if [ "${INSTALL_HOMEBREW}" == "0" ]; then
 	echo "Fetching full brew repo as ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/usr/bin/git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow'
 
-	echo "Updating homebrew ${SALT_USER}..."
+	echo "Updating homebrew as ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/usr/local/bin/brew update'
 
 	# Ensure homebrew is in the ssh user's path
