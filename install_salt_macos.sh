@@ -21,7 +21,7 @@ fi
 
 echo "install_salt_macos.sh will install ${SALT_VERSION}-py3"
 
-if [ "${ARCHIVED_VERSION}" -eq 0 ]; then
+if [ "${ARCHIVED_VERSION}" == "0" ]; then
 	REPO_URL="https://archive.repo.saltproject.io"
 else
 	REPO_URL="https://repo.saltproject.io"
@@ -35,10 +35,10 @@ URL="${REPO_URL}/osx/${PKG_NAME}"
 curl -sSL -o "${PKG_FILE}" "${URL}"
 sudo installer -pkg "${PKG_FILE}" -target /
 rm "${PKG_FILE}"
-rm "${TEMP_DIR}"
+rmdir "${TEMP_DIR}"
 
 # We need Homebrew for salt pkg management
-if [ "${INSTALL_HOMEBREW}" -eq 0 ]; then
+if [ "${INSTALL_HOMEBREW}" == "0" ]; then
 	echo "Installing Homebrew as ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null'
     
