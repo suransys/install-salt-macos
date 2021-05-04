@@ -39,17 +39,11 @@ rm "${TEMP_DIR}"
 
 # We need Homebrew for salt pkg management
 if [ "${INSTALL_HOMEBREW}" -eq 0 ]; then
-	echo "Fetching Homebrew core as a non-shallow copy as ${SALT_USER}..."
-	su - "${SALT_USER}" -c 'git -C "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core" fetch --unshallow' || true
-    
 	echo "Installing Homebrew as ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null'
     
 	echo "Updating Homebrew as ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/usr/local/bin/brew update'
-    
-	echo "Tapping services"
-	su - "${SALT_USER}" -c '/usr/local/bin/brew tap homebrew/services'
 
 	# Ensure homebrew is in the ssh user's path
 	echo "Adding Homebrew to the ${SALT_USER} user's path..."
