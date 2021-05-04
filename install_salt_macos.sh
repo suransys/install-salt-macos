@@ -42,6 +42,12 @@ if [ "${INSTALL_HOMEBREW}" == "0" ]; then
 	echo "Installing Homebrew as ${SALT_USER}..."
 	su - "${SALT_USER}" -c '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null'
 
+	echo "Fetching full brew repo as ${SALT_USER}..."
+	su - "${SALT_USER}" -c 'git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow'
+
+	echo "Updating homebrew ${SALT_USER}..."
+	su - "${SALT_USER}" -c '/usr/local/bin/brew update'
+
 	# Ensure homebrew is in the ssh user's path
 	echo "Adding Homebrew to the ${SALT_USER} user's path..."
 	su - "${SALT_USER}" -c "echo 'export PATH=/usr/local/bin:/usr/local/sbin:\$PATH' >> .bash_profile && chmod 0700 .bash_profile"
