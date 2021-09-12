@@ -7,7 +7,7 @@ INSTALL_HOMEBREW="${3:-0}"
 ARCHIVED_VERSION="${4:-1}"
 
 if [ -e /opt/salt/bin/salt-call ]; then
-	CURRENT_SALT_VERSION=$(/opt/salt/bin/salt-call --version | grep -E -o '\d+')
+	CURRENT_SALT_VERSION=$(/opt/salt/bin/salt-call --version | grep -E -o '\d+\.\d+')
 	if (( $(echo "${CURRENT_SALT_VERSION} == ${SALT_VERSION}" | bc -l) )); then
 		echo "salt-call is available and returning ${SALT_VERSION}"
 		exit 0
