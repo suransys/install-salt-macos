@@ -5,6 +5,7 @@ SALT_VERSION="$1"
 SALT_USER="${2:-$(whoami)}"
 INSTALL_HOMEBREW="${3:-0}"
 ARCHIVED_VERSION="${4:-1}"
+DOWNLOAD_VERSION="${4:-$1}"
 
 if [ -e /opt/salt/bin/salt-call ]; then
 	CURRENT_SALT_VERSION=$(/opt/salt/bin/salt-call --version | grep -E -o '\d+(\.\d+)?')
@@ -27,7 +28,7 @@ else
 	REPO_URL="https://repo.saltproject.io"
 fi
 
-PKG_NAME="salt-${SALT_VERSION}-py3-x86_64.pkg"
+PKG_NAME="salt-${DOWNLOAD_VERSION}-py3-x86_64.pkg"
 TEMP_DIR="$(mktemp -d)"
 PKG_FILE="${TEMP_DIR}/${PKG_NAME}"
 URL="${REPO_URL}/osx/${PKG_NAME}"
