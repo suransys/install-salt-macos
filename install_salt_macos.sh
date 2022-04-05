@@ -5,7 +5,11 @@ SALT_VERSION="$1"
 SALT_USER="${2:-$(whoami)}"
 INSTALL_HOMEBREW="${3:-0}"
 ARCHIVED_VERSION="${4:-1}"
-DOWNLOAD_VERSION="${4:-$1}"
+DOWNLOAD_VERSION="${4}"
+
+if [ -z "${DOWNLOAD_VERSION}" ]; then
+	DOWNLOAD_VERSION="${SALT_VERSION}"
+fi
 
 if [ -e /opt/salt/bin/salt-call ]; then
 	CURRENT_SALT_VERSION=$(/opt/salt/bin/salt-call --version | grep -E -o '\d+(\.\d+)?')
