@@ -24,7 +24,7 @@ if [ -e /opt/salt/bin/salt-call ]; then
 	fi
 fi
 
-echo "install_salt_macos.sh will install ${SALT_VERSION}-py3"
+echo "install_salt_macos.sh will install ${SALT_VERSION}-py3 with download version ${DOWNLOAD_VERSION}"
 
 if [ "${ARCHIVED_VERSION}" == "0" ]; then
 	REPO_URL="https://archive.repo.saltproject.io"
